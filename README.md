@@ -109,6 +109,10 @@ Run Jenkins with Docker Container :
         drwxr-xr-x  3 &lt;user&gt;  staff    96B Apr 19 14:52 .
         drwxr-xr-x  4 &lt;user&gt;  staff   128B Apr 19 14:54 ..
         -rw-r--r--  1 &lt;user&gt;  staff    11B Apr 19 14:52 test.txt
+
+    ❯ ccat /Users/.../Documents/test/docker-mount/jenkins_home/workspace/my_first_job/test.txt
+
+        1234567890        
 </pre>
 
 
