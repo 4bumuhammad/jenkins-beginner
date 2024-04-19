@@ -133,6 +133,11 @@ Run Jenkins with Docker Container :
 
 - **Test : Python job**
 
+Reference : <br />
+Learn Jenkins! Complete Jenkins Course - Zero to Hero
+<pre>https://www.youtube.com/watch?v=6YZvp2GwT0A</pre>
+30.17
+
 &nbsp;
 
 Cleanly delete the current jenkins container and image because it doesn't have python installed in it. To make it easier, we will run and use the full version of the jenkins image.
@@ -166,35 +171,26 @@ New Container Image :
         --name jenkins-container \
         -p 8080:8080 -p 50000:50000 \
         -v /Users/powercommerce/Documents/test/docker-mount/jenkins_home:/var/jenkins_home \
-        jenkins/jenkins:2.60.3
+        jenkins/jenkins:2.440.3
 
 <pre>
-    Unable to find image 'jenkins/jenkins:2.60.3' locally
-    2.60.3: Pulling from jenkins/jenkins
-    219d2e45b4af: Pull complete 
-    a482fbcfe407: Pull complete 
-    980edaaff53b: Pull complete 
-    f44dc7c129fe: Pull complete 
-    7555d68a907c: Pull complete 
-    f52b31cfae59: Pull complete 
-    a7eec7274b2f: Pull complete 
-    1fb549c32d65: Pull complete 
-    175c1150f2d6: Pull complete 
-    b60c33a48a22: Pull complete 
-    777391644064: Pull complete 
-    8b85004084a4: Pull complete 
-    c8531d22ef05: Pull complete 
-    a180a49c34ca: Pull complete 
-    5c66deee8c09: Pull complete 
-    53a0a2676749: Pull complete 
-    350ae88b90ea: Pull complete 
-    e91b3de9543d: Pull complete 
-    942a9b1fb4f7: Pull complete 
-    df95e22883e2: Pull complete 
-    Digest: sha256:6c65787f7423d84cf2c73915a334d7dedbeb70325c70cb4f5536b15afe1615ee
-    Status: Downloaded newer image for jenkins/jenkins:2.60.3
-    WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
-    f989403649a72cddcba62a3ee96183b4b48af303e610796f8d8c4907ed882deb
+        Unable to find image 'jenkins/jenkins:2.440.3' locally
+        2.440.3: Pulling from jenkins/jenkins
+        1e92f3a395ff: Pull complete 
+        b4702c7673f1: Pull complete 
+        bf18644a36a5: Pull complete 
+        4f445a566c95: Pull complete 
+        c1f6789b0bcf: Pull complete 
+        50acd283f613: Pull complete 
+        7409fe819760: Pull complete 
+        9f3e43a5a6fb: Pull complete 
+        5b29115785db: Pull complete 
+        1b74dc9dcd87: Pull complete 
+        074b15a3518d: Pull complete 
+        ede1958e1e8f: Pull complete 
+        Digest: sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536
+        Status: Downloaded newer image for jenkins/jenkins:2.440.3
+        d753a6f9617bbfdaf234ba8a9d2cb07b1d6fc7d148f957a112955721bac41d4f
 </pre>
 
 &nbsp;
@@ -202,21 +198,69 @@ New Container Image :
 <pre>
     ❯ docker images
 
-        REPOSITORY        TAG       IMAGE ID       CREATED       SIZE
-        jenkins/jenkins   2.60.3    c7d3b6093b29   6 years ago   811MB
+        REPOSITORY        TAG       IMAGE ID       CREATED        SIZE
+        jenkins/jenkins   2.440.3   7bc520724a1a   43 hours ago   498MB
 
 
     ❯ docker ps -a
 
-        CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                                              NAMES
-        f989403649a7   jenkins/jenkins:2.60.3   "/bin/tini -- /usr/l…"   5 minutes ago   Up 5 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-container
+        CONTAINER ID   IMAGE                     COMMAND                  CREATED          STATUS          PORTS                                              NAMES
+        d753a6f9617b   jenkins/jenkins:2.440.3   "/usr/bin/tini -- /u…"   12 minutes ago   Up 12 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-container
 </pre>
 
-
 &nbsp;
 
-&nbsp;
+<pre>
+    ❯ docker logs jenkins-container
 
+
+        Running from: /usr/share/jenkins/jenkins.war
+        webroot: /var/jenkins_home/war
+        2024-04-19 09:35:23.789+0000 [id=1]     INFO    winstone.Logger#logInternal: Beginning extraction from war file
+        2024-04-19 09:35:44.278+0000 [id=1]     WARNING o.e.j.s.handler.ContextHandler#setContextPath: Empty contextPath
+        2024-04-19 09:35:44.322+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: jetty-10.0.20; built: 2024-01-29T20:46:45.278Z; git: 3a745c71c23682146f262b99f4ddc4c1bc41630c; jvm 17.0.10+7
+        2024-04-19 09:35:45.154+0000 [id=1]     INFO    o.e.j.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+        2024-04-19 09:35:45.419+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: Session workerName=node0
+        2024-04-19 09:35:47.246+0000 [id=1]     INFO    hudson.WebAppMain#contextInitialized: Jenkins home directory: /var/jenkins_home found at: EnvVars.masterEnvVars.get("JENKINS_HOME")
+        2024-04-19 09:35:47.794+0000 [id=1]     INFO    o.e.j.s.handler.ContextHandler#doStart: Started w.@4d192aef{Jenkins v2.440.3,/,file:///var/jenkins_home/war/,AVAILABLE}{/var/jenkins_home/war}
+        2024-04-19 09:35:47.809+0000 [id=1]     INFO    o.e.j.server.AbstractConnector#doStart: Started ServerConnector@78365cfa{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+        2024-04-19 09:35:47.822+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: Started Server@5644dc81{STARTING}[10.0.20,sto=0] @24294ms
+        2024-04-19 09:35:47.823+0000 [id=25]    INFO    winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
+        2024-04-19 09:35:49.161+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Started initialization
+        2024-04-19 09:35:49.291+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+        2024-04-19 09:35:53.447+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+        2024-04-19 09:35:53.472+0000 [id=36]    INFO    jenkins.InitReactorRunner$1#onAttained: Started all plugins
+        2024-04-19 09:35:53.506+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+        2024-04-19 09:35:54.282+0000 [id=36]    INFO    jenkins.InitReactorRunner$1#onAttained: System config loaded
+        2024-04-19 09:35:54.282+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: System config adapted
+        2024-04-19 09:35:54.283+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+        2024-04-19 09:35:54.284+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+        2024-04-19 09:35:54.379+0000 [id=49]    INFO    hudson.util.Retrier#start: Attempt #1 to do the action check updates server
+        2024-04-19 09:35:55.434+0000 [id=36]    INFO    jenkins.install.SetupWizard#init: 
+
+        *************************************************************
+        *************************************************************
+        *************************************************************
+
+        Jenkins initial setup is required. An admin user has been created and a password generated.
+        Please use the following password to proceed to installation:
+
+        d4586404c2854cc59869d26ca0a7b113
+
+        This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+
+        *************************************************************
+        *************************************************************
+        *************************************************************
+
+        2024-04-19 09:36:06.939+0000 [id=36]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
+        2024-04-19 09:36:06.978+0000 [id=24]    INFO    hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
+        2024-04-19 09:36:08.443+0000 [id=49]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+        2024-04-19 09:36:08.444+0000 [id=49]    INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
+</pre>
+
+&nbsp;
+ 
 &nbsp;
 
 &nbsp;
