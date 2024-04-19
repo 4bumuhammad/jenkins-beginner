@@ -55,6 +55,30 @@ Run Jenkins with Docker Container :
 
 &nbsp;
 
+- Test : Execute Shell (next)
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_execute_shell_005.png" alt="ss_jenkins_beginner_next_execute_shell_005" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_execute_shell_006.png" alt="ss_jenkins_beginner_next_execute_shell_006" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_execute_shell_007.png" alt="ss_jenkins_beginner_next_execute_shell_007" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+---
+
+&nbsp;
+
 <div align="center">
     <img src="./gambar-petunjuk/well_done.png" alt="well_done" style="display: block; margin: 0 auto;">
 </div> 
