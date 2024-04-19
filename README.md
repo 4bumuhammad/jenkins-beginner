@@ -158,8 +158,60 @@ Cleanly delete the current jenkins container and image because it doesn't have p
         Deleted: sha256:7773f6e2f057e8defc1bfecd1d96414d8273040c8ac5cdaea2d03caef3692c27
 </pre>
 
+&nbsp;
+
+New Container Image : 
+
+    ❯ docker run -d \
+        --name jenkins-container \
+        -p 8080:8080 -p 50000:50000 \
+        -v /Users/powercommerce/Documents/test/docker-mount/jenkins_home:/var/jenkins_home \
+        jenkins/jenkins:2.60.3
+
+<pre>
+    Unable to find image 'jenkins/jenkins:2.60.3' locally
+    2.60.3: Pulling from jenkins/jenkins
+    219d2e45b4af: Pull complete 
+    a482fbcfe407: Pull complete 
+    980edaaff53b: Pull complete 
+    f44dc7c129fe: Pull complete 
+    7555d68a907c: Pull complete 
+    f52b31cfae59: Pull complete 
+    a7eec7274b2f: Pull complete 
+    1fb549c32d65: Pull complete 
+    175c1150f2d6: Pull complete 
+    b60c33a48a22: Pull complete 
+    777391644064: Pull complete 
+    8b85004084a4: Pull complete 
+    c8531d22ef05: Pull complete 
+    a180a49c34ca: Pull complete 
+    5c66deee8c09: Pull complete 
+    53a0a2676749: Pull complete 
+    350ae88b90ea: Pull complete 
+    e91b3de9543d: Pull complete 
+    942a9b1fb4f7: Pull complete 
+    df95e22883e2: Pull complete 
+    Digest: sha256:6c65787f7423d84cf2c73915a334d7dedbeb70325c70cb4f5536b15afe1615ee
+    Status: Downloaded newer image for jenkins/jenkins:2.60.3
+    WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+    f989403649a72cddcba62a3ee96183b4b48af303e610796f8d8c4907ed882deb
+</pre>
 
 &nbsp;
+
+<pre>
+    ❯ docker images
+
+        REPOSITORY        TAG       IMAGE ID       CREATED       SIZE
+        jenkins/jenkins   2.60.3    c7d3b6093b29   6 years ago   811MB
+
+
+    ❯ docker ps -a
+
+        CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                                              NAMES
+        f989403649a7   jenkins/jenkins:2.60.3   "/bin/tini -- /usr/l…"   5 minutes ago   Up 5 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-container
+</pre>
+
 
 &nbsp;
 
