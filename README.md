@@ -129,6 +129,11 @@ Run Jenkins with Docker Container :
 
 &nbsp;
 
+- **Test : Python job**
+
+&nbsp;
+
+
 ---
 
 &nbsp;
