@@ -191,6 +191,16 @@ Cleanly delete the current jenkins container and image because it doesn't have p
 
     ❯ docker build -t myjenkins-blueocean:2.414.2 .
 
+
+&nbsp; 
+
+Create the network 'jenkins'
+
+<pre>
+    docker network create jenkins
+</pre>
+
+
 &nbsp; 
 
     ❯ docker run --name jenkins-blueocean --restart=on-failure --detach \
