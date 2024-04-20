@@ -165,32 +165,44 @@ Cleanly delete the current jenkins container and image because it doesn't have p
 
 &nbsp;
 
-New Container Image : 
-
-    ❯ docker run -d \
-        --name jenkins-container \
-        -p 8080:8080 -p 50000:50000 \
-        -v /Users/powercommerce/Documents/test/docker-mount/jenkins_home:/var/jenkins_home \
-        jenkins/jenkins:2.440.3
+### Build the Jenkins BlueOcean Docker Image (or pull and use the one I built) 
 
 <pre>
-        Unable to find image 'jenkins/jenkins:2.440.3' locally
-        2.440.3: Pulling from jenkins/jenkins
-        1e92f3a395ff: Pull complete 
-        b4702c7673f1: Pull complete 
-        bf18644a36a5: Pull complete 
-        4f445a566c95: Pull complete 
-        c1f6789b0bcf: Pull complete 
-        50acd283f613: Pull complete 
-        7409fe819760: Pull complete 
-        9f3e43a5a6fb: Pull complete 
-        5b29115785db: Pull complete 
-        1b74dc9dcd87: Pull complete 
-        074b15a3518d: Pull complete 
-        ede1958e1e8f: Pull complete 
-        Digest: sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536
-        Status: Downloaded newer image for jenkins/jenkins:2.440.3
-        d753a6f9617bbfdaf234ba8a9d2cb07b1d6fc7d148f957a112955721bac41d4f
+    ❯ touch Dockerfile
+
+
+    ❯ vim Dockerfile
+
+        FROM jenkins/jenkins:2.414.2-jdk11
+        USER root
+        RUN apt-get update && apt-get install -y lsb-release python3-pip
+        RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
+        https://download.docker.com/linux/debian/gpg
+        RUN echo "deb [arch=$(dpkg --print-architecture) \
+        signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+        https://download.docker.com/linux/debian \
+        $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+        RUN apt-get update && apt-get install -y docker-ce-cli
+        USER jenkins
+        RUN jenkins-plugin-cli --plugins "blueocean:1.25.3 docker-workflow:1.28"
+
+</pre>
+
+
+    ❯ docker build -t myjenkins-blueocean:2.414.2 .
+
+&nbsp; 
+
+    ❯ docker run --name jenkins-blueocean --restart=on-failure --detach \
+        --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
+        --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
+        --publish 8080:8080 --publish 50000:50000 \
+        --volume /Users/powercommerce/Documents/test/docker-mount/jenkins/data:/var/jenkins_home \
+        --volume /Users/powercommerce/Documents/test/docker-mount/jenkins/docker-certs:/certs/client:ro \
+        myjenkins-blueocean:2.414.2
+
+<pre>
+
 </pre>
 
 &nbsp;
