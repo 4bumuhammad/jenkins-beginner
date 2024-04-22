@@ -336,7 +336,8 @@ Create the network 'jenkins'
 ---
 
 &nbsp;
- 
+
+Build an image of the Dockerfile script.
 <pre>
     ❯ docker build -t myjenkins/jenkins:2.440.3-lts .
 
@@ -384,6 +385,7 @@ Create the network 'jenkins'
 
 &nbsp;
 
+Display the result as a new image.
 <pre>
     ❯ docker images
 
@@ -393,6 +395,7 @@ Create the network 'jenkins'
 
 &nbsp;
 
+Run the image into a container that has been set up.
 <pre>
     ❯ docker run -d \
         --name jenkins-container \
@@ -403,6 +406,7 @@ Create the network 'jenkins'
 
 &nbsp;
 
+Display container list results.
 <pre>
     ❯ docker ps -a
 
@@ -412,6 +416,7 @@ Create the network 'jenkins'
 
 &nbsp;
 
+Open the logs container `jenkins-container` and wait for a few minutes for the following logs:
 <pre>
     ❯ docker logs jenkins-container
 
@@ -463,6 +468,7 @@ Create the network 'jenkins'
 
 &nbsp;
 
+Make sure that the following log sections are present so that you can proceed to the next stage of the dashboard console.
 <div align="center">
     <img src="./gambar-petunjuk/ss_jenkins_beginner_next_3_execute_shell_010.png" alt="ss_jenkins_beginner_next_3_execute_shell_010" style="display: block; margin: 0 auto;">
 </div> 
