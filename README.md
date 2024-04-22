@@ -165,36 +165,9 @@ Cleanly delete the current jenkins container and image because it doesn't have p
 
 &nbsp;
 
-### Build the Jenkins BlueOcean Docker Image (or pull and use the one I built) 
+### Build the Jenkins Docker Image
 
 <pre>
-    ❯ docker pull devopsjourney1/jenkins-blueocean:2.332.3-1 && docker tag devopsjourney1/jenkins-blueocean:2.332.3-1 myjenkins-blueocean:2.332.3-1
-
-        2.332.3-1: Pulling from devopsjourney1/jenkins-blueocean
-        1339eaac5b67: Pulling fs layer 
-        ee7fe1de5234: Pull complete 
-        a167e5ee9d3d: Pull complete 
-        635f2040c45d: Pull complete 
-        0de24a2d2be8: Pull complete 
-        523f7f5f5298: Pull complete 
-        0417692c0dbb: Pull complete 
-        8ad508db83b2: Pull complete 
-        91d64a25931a: Pull complete 
-        6432ac88896a: Pull complete 
-        427fea71d528: Pull complete 
-        8b9f06c87661: Pull complete 
-        7145f515d922: Pull complete 
-        97599d4b06aa: Pull complete 
-        c0de4b3e376c: Pull complete 
-        253de6ee3d92: Pull complete 
-        fcc3b5be0cfb: Pull complete 
-        638c2322f09a: Pull complete 
-        e90424c20795: Pull complete 
-        Digest: sha256:f414ed9f6cd2b60ae5867324700c2a45e27264fdd35abddee38ae16899dc9d0f
-        Status: Downloaded newer image for devopsjourney1/jenkins-blueocean:2.332.3-1
-        docker.io/devopsjourney1/jenkins-blueocean:2.332.3-1
-
-
     ❯ docker images
 
         REPOSITORY                         TAG         IMAGE ID       CREATED         SIZE
@@ -218,49 +191,9 @@ Cleanly delete the current jenkins container and image because it doesn't have p
 
         WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
         2261cc209d121c778c47aec4ae814ccb8b3403c066066c7a85cf4e9de87dbbec
-
-
-    ❯ docker ps -a
-
-        CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS         PORTS                                              NAMES
-        2261cc209d12   myjenkins-blueocean:2.332.3-1   "/usr/bin/tini -- /u…"   4 seconds ago   Up 4 seconds   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-blueocean
-
-    ❯ docker exec -it jenkins-blueocean /bin/bash
-
-        jenkins@2261cc209d12:/$ python --version
-        bash: python: command not found
-        jenkins@2261cc209d12:/$ python3 --version
-        Python 3.9.2
 </pre>
-
-
-    ❯ docker build -t myjenkins-blueocean:2.414.2 .
-
 
 &nbsp; 
-
-Create the network 'jenkins'
-
-<pre>
-    docker network create jenkins
-</pre>
-
-
-&nbsp; 
-
-    ❯ docker run --name jenkins-blueocean --restart=on-failure --detach \
-        --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
-        --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
-        --publish 8080:8080 --publish 50000:50000 \
-        --volume /Users/powercommerce/Documents/test/docker-mount/jenkins/data:/var/jenkins_home \
-        --volume /Users/powercommerce/Documents/test/docker-mount/jenkins/docker-certs:/certs/client:ro \
-        myjenkins-blueocean:2.332.3-1
-
-<pre>
-
-</pre>
-
-&nbsp;
 
 &nbsp;
  
