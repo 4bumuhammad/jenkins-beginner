@@ -168,24 +168,69 @@ Cleanly delete the current jenkins container and image because it doesn't have p
 ### Build the Jenkins BlueOcean Docker Image (or pull and use the one I built) 
 
 <pre>
-    ❯ touch Dockerfile
+    ❯ docker pull devopsjourney1/jenkins-blueocean:2.332.3-1 && docker tag devopsjourney1/jenkins-blueocean:2.332.3-1 myjenkins-blueocean:2.332.3-1
+
+        2.332.3-1: Pulling from devopsjourney1/jenkins-blueocean
+        1339eaac5b67: Pulling fs layer 
+        ee7fe1de5234: Pull complete 
+        a167e5ee9d3d: Pull complete 
+        635f2040c45d: Pull complete 
+        0de24a2d2be8: Pull complete 
+        523f7f5f5298: Pull complete 
+        0417692c0dbb: Pull complete 
+        8ad508db83b2: Pull complete 
+        91d64a25931a: Pull complete 
+        6432ac88896a: Pull complete 
+        427fea71d528: Pull complete 
+        8b9f06c87661: Pull complete 
+        7145f515d922: Pull complete 
+        97599d4b06aa: Pull complete 
+        c0de4b3e376c: Pull complete 
+        253de6ee3d92: Pull complete 
+        fcc3b5be0cfb: Pull complete 
+        638c2322f09a: Pull complete 
+        e90424c20795: Pull complete 
+        Digest: sha256:f414ed9f6cd2b60ae5867324700c2a45e27264fdd35abddee38ae16899dc9d0f
+        Status: Downloaded newer image for devopsjourney1/jenkins-blueocean:2.332.3-1
+        docker.io/devopsjourney1/jenkins-blueocean:2.332.3-1
 
 
-    ❯ vim Dockerfile
+    ❯ docker images
 
-        FROM jenkins/jenkins:2.414.2-jdk11
-        USER root
-        RUN apt-get update && apt-get install -y lsb-release python3-pip
-        RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
-        https://download.docker.com/linux/debian/gpg
-        RUN echo "deb [arch=$(dpkg --print-architecture) \
-        signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
-        https://download.docker.com/linux/debian \
-        $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
-        RUN apt-get update && apt-get install -y docker-ce-cli
-        USER jenkins
-        RUN jenkins-plugin-cli --plugins "blueocean:1.25.3 docker-workflow:1.28"
+        REPOSITORY                         TAG         IMAGE ID       CREATED         SIZE
+        devopsjourney1/jenkins-blueocean   2.332.3-1   f0cea31942b5   11 months ago   781MB
+        myjenkins-blueocean                2.332.3-1   f0cea31942b5   11 months ago   781MB
 
+
+    ❯ docker network create jenkins
+
+        90266d20a575d9021ad53eee8ad791de642a42f6ca470bb98e876c6890f0b2e2
+
+
+
+    ❯ docker run --name jenkins-blueocean --restart=on-failure --detach \
+            --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
+            --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
+            --publish 8080:8080 --publish 50000:50000 \
+            --volume /Users/powercommerce/Documents/test/docker-mount/jenkins/data:/var/jenkins_home \
+            --volume /Users/powercommerce/Documents/test/docker-mount/jenkins/docker-certs:/certs/client:ro \
+            myjenkins-blueocean:2.332.3-1
+
+        WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+        2261cc209d121c778c47aec4ae814ccb8b3403c066066c7a85cf4e9de87dbbec
+
+
+    ❯ docker ps -a
+
+        CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS         PORTS                                              NAMES
+        2261cc209d12   myjenkins-blueocean:2.332.3-1   "/usr/bin/tini -- /u…"   4 seconds ago   Up 4 seconds   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-blueocean
+
+    ❯ docker exec -it jenkins-blueocean /bin/bash
+
+        jenkins@2261cc209d12:/$ python --version
+        bash: python: command not found
+        jenkins@2261cc209d12:/$ python3 --version
+        Python 3.9.2
 </pre>
 
 
@@ -209,7 +254,7 @@ Create the network 'jenkins'
         --publish 8080:8080 --publish 50000:50000 \
         --volume /Users/powercommerce/Documents/test/docker-mount/jenkins/data:/var/jenkins_home \
         --volume /Users/powercommerce/Documents/test/docker-mount/jenkins/docker-certs:/certs/client:ro \
-        myjenkins-blueocean:2.414.2
+        myjenkins-blueocean:2.332.3-1
 
 <pre>
 
@@ -220,14 +265,9 @@ Create the network 'jenkins'
 <pre>
     ❯ docker images
 
-        REPOSITORY        TAG       IMAGE ID       CREATED        SIZE
-        jenkins/jenkins   2.440.3   7bc520724a1a   43 hours ago   498MB
-
 
     ❯ docker ps -a
 
-        CONTAINER ID   IMAGE                     COMMAND                  CREATED          STATUS          PORTS                                              NAMES
-        d753a6f9617b   jenkins/jenkins:2.440.3   "/usr/bin/tini -- /u…"   12 minutes ago   Up 12 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-container
 </pre>
 
 &nbsp;
@@ -286,6 +326,146 @@ Create the network 'jenkins'
 &nbsp;
 
 &nbsp;
+ 
+&nbsp;
+
+&nbsp;
+ 
+&nbsp;
+
+---
+
+&nbsp;
+ 
+<pre>
+    ❯ docker build -t myjenkins/jenkins:2.440.3-lts .
+
+        [+] Building 152.0s (6/6) FINISHED                                                                                                                                                                                  
+        => [internal] load build definition from Dockerfile                                                                                                                                                           0.0s
+        => => transferring dockerfile: 471B                                                                                                                                                                           0.0s
+        => [internal] load .dockerignore                                                                                                                                                                              0.0s
+        => => transferring context: 2B                                                                                                                                                                                0.0s
+        => [internal] load metadata for docker.io/jenkins/jenkins:2.440.3-lts                                                                                                                                         6.9s
+        => [1/2] FROM docker.io/jenkins/jenkins:2.440.3-lts@sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536                                                                                  99.6s
+        => => resolve docker.io/jenkins/jenkins:2.440.3-lts@sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536                                                                                   0.0s
+        => => sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536 3.12kB / 3.12kB                                                                                                                 0.0s
+        => => sha256:665ac20445a40ed26152b0843803786f5f4ef44dac816f5e0b42f9b9be197253 2.58kB / 2.58kB                                                                                                                 0.0s
+        => => sha256:7bc520724a1a906377ba19dc60ca86adfa75b42748583c9c5981e473ca3bbfa2 12.35kB / 12.35kB                                                                                                               0.0s
+        => => sha256:b4702c7673f1c80ba39f4a7b3b20fa908e622dd7ee655640c3960db5278c7e14 61.12MB / 61.12MB                                                                                                              75.6s
+        => => sha256:1e92f3a395ff98a929e797a3c392bb6d0f05531068d34b81d3cd41ed6ce82ca4 49.60MB / 49.60MB                                                                                                              57.4s
+        => => sha256:bf18644a36a52b170e59d313f05fb9f68b1615dcb436b5b6c1b8d62d7c0afc4e 8.25MB / 8.25MB                                                                                                                11.8s
+        => => sha256:4f445a566c9532f469bfe6c702768e7697a15b9cf9a1403cd999be2619738a0c 1.23kB / 1.23kB                                                                                                                12.3s
+        => => sha256:c1f6789b0bcf11523c86d263d27739edfa6030dab89f9deeb8cc56e4a7f5e932 184B / 184B                                                                                                                    12.7s
+        => => sha256:50acd283f613f1b50454c9fc2fd6cca1366ee670f7e020260abed4fa76a88285 93.28MB / 93.28MB                                                                                                              86.7s
+        => => sha256:7409fe8197606dd9c9ededed3d901cf3ecaae0f10a668807309fdd9d0dc4e33a 190B / 190B                                                                                                                    59.1s
+        => => extracting sha256:1e92f3a395ff98a929e797a3c392bb6d0f05531068d34b81d3cd41ed6ce82ca4                                                                                                                      1.3s
+        => => sha256:9f3e43a5a6fb13196b957feb21d315e8027237b688ba92a1368596b819f9dbc6 6.21MB / 6.21MB                                                                                                                65.6s
+        => => sha256:5b29115785db463913ca26c24421ef4ab42478a96cadb853f758e7d42ae5b2eb 62.66MB / 62.66MB                                                                                                              98.5s
+        => => extracting sha256:b4702c7673f1c80ba39f4a7b3b20fa908e622dd7ee655640c3960db5278c7e14                                                                                                                      1.4s
+        => => sha256:1b74dc9dcd874ebb273c255ff11f86dbe07ef05eea7247f77070f3ae9b606dcf 1.92kB / 1.92kB                                                                                                                84.4s
+        => => extracting sha256:bf18644a36a52b170e59d313f05fb9f68b1615dcb436b5b6c1b8d62d7c0afc4e                                                                                                                      0.2s
+        => => extracting sha256:4f445a566c9532f469bfe6c702768e7697a15b9cf9a1403cd999be2619738a0c                                                                                                                      0.0s
+        => => extracting sha256:c1f6789b0bcf11523c86d263d27739edfa6030dab89f9deeb8cc56e4a7f5e932                                                                                                                      0.0s
+        => => sha256:074b15a3518d428f4ba1da66804c0ba56c96f7a243a08cc09b9f72878570b27e 1.23kB / 1.23kB                                                                                                                86.2s
+        => => sha256:ede1958e1e8f82bfa6fba790041c952357db5bd8b08aea1a2c5194624265cb13 391B / 391B                                                                                                                    86.7s
+        => => extracting sha256:50acd283f613f1b50454c9fc2fd6cca1366ee670f7e020260abed4fa76a88285                                                                                                                      0.3s
+        => => extracting sha256:7409fe8197606dd9c9ededed3d901cf3ecaae0f10a668807309fdd9d0dc4e33a                                                                                                                      0.0s
+        => => extracting sha256:9f3e43a5a6fb13196b957feb21d315e8027237b688ba92a1368596b819f9dbc6                                                                                                                      0.1s
+        => => extracting sha256:5b29115785db463913ca26c24421ef4ab42478a96cadb853f758e7d42ae5b2eb                                                                                                                      0.8s
+        => => extracting sha256:1b74dc9dcd874ebb273c255ff11f86dbe07ef05eea7247f77070f3ae9b606dcf                                                                                                                      0.0s
+        => => extracting sha256:074b15a3518d428f4ba1da66804c0ba56c96f7a243a08cc09b9f72878570b27e                                                                                                                      0.0s
+        => => extracting sha256:ede1958e1e8f82bfa6fba790041c952357db5bd8b08aea1a2c5194624265cb13                                                                                                                      0.0s
+        => [2/2] RUN apt-get update &&     apt-get install -y     python3     python3-pip     && apt-get clean     && rm -rf /var/lib/apt/lists/*                                                                    44.3s
+        => exporting to image                                                                                                                                                                                         1.0s
+        => => exporting layers                                                                                                                                                                                        1.0s
+        => => writing image sha256:f7d77e429e3cc60610a08b69faf8951361cc4e13c2b408f5201c71588b93b9ee                                                                                                                   0.0s
+        => => naming to docker.io/myjenkins/jenkins:2.440.3-lts                              
+</pre>
+
+&nbsp;
+
+<pre>
+    ❯ docker images
+
+        REPOSITORY          TAG           IMAGE ID       CREATED          SIZE
+        myjenkins/jenkins   2.440.3-lts   f7d77e429e3c   25 minutes ago   869MB
+</pre>
+
+&nbsp;
+
+<pre>
+    ❯ docker run -d \
+        --name jenkins-container \
+        -p 8080:8080 -p 50000:50000 \
+        -v /Users/powercommerce/Documents/test/docker-mount/jenkins/home:/var/jenkins_home \
+        myjenkins/jenkins:2.440.3-lts
+</pre>
+
+&nbsp;
+
+<pre>
+    ❯ docker ps -a
+
+        CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS          PORTS                                              NAMES
+        997450ab3808   myjenkins/jenkins:2.440.3-lts   "/usr/bin/tini -- /u…"   20 minutes ago   Up 20 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-container
+</pre>
+
+&nbsp;
+
+<pre>
+    ❯ docker logs jenkins-container
+
+
+        Running from: /usr/share/jenkins/jenkins.war
+        webroot: /var/jenkins_home/war
+        2024-04-22 09:22:20.634+0000 [id=1]     INFO    winstone.Logger#logInternal: Beginning extraction from war file
+        2024-04-22 09:22:40.216+0000 [id=1]     WARNING o.e.j.s.handler.ContextHandler#setContextPath: Empty contextPath
+        2024-04-22 09:22:40.249+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: jetty-10.0.20; built: 2024-01-29T20:46:45.278Z; git: 3a745c71c23682146f262b99f4ddc4c1bc41630c; jvm 17.0.10+7
+        2024-04-22 09:22:40.929+0000 [id=1]     INFO    o.e.j.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+        2024-04-22 09:22:41.018+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: Session workerName=node0
+        2024-04-22 09:22:42.334+0000 [id=1]     INFO    hudson.WebAppMain#contextInitialized: Jenkins home directory: /var/jenkins_home found at: EnvVars.masterEnvVars.get("JENKINS_HOME")
+        2024-04-22 09:22:42.753+0000 [id=1]     INFO    o.e.j.s.handler.ContextHandler#doStart: Started w.@4d192aef{Jenkins v2.440.3,/,file:///var/jenkins_home/war/,AVAILABLE}{/var/jenkins_home/war}
+        2024-04-22 09:22:42.760+0000 [id=1]     INFO    o.e.j.server.AbstractConnector#doStart: Started ServerConnector@78365cfa{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+        2024-04-22 09:22:42.765+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: Started Server@5644dc81{STARTING}[10.0.20,sto=0] @22457ms
+        2024-04-22 09:22:42.766+0000 [id=25]    INFO    winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
+        2024-04-22 09:22:43.699+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Started initialization
+        2024-04-22 09:22:43.772+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+        2024-04-22 09:22:46.278+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+        2024-04-22 09:22:46.290+0000 [id=32]    INFO    jenkins.InitReactorRunner$1#onAttained: Started all plugins
+        2024-04-22 09:22:46.322+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+        2024-04-22 09:22:46.772+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: System config loaded
+        2024-04-22 09:22:46.772+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: System config adapted
+        2024-04-22 09:22:46.772+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+        2024-04-22 09:22:46.773+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+        2024-04-22 09:22:46.852+0000 [id=49]    INFO    hudson.util.Retrier#start: Attempt #1 to do the action check updates server
+        2024-04-22 09:22:47.748+0000 [id=35]    INFO    jenkins.install.SetupWizard#init: 
+
+        *************************************************************
+        *************************************************************
+        *************************************************************
+
+        Jenkins initial setup is required. An admin user has been created and a password generated.
+        Please use the following password to proceed to installation:
+
+        1fe91f44db5d49c7956ce3a6b973aff9
+
+        This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+
+        *************************************************************
+        *************************************************************
+        *************************************************************
+
+        2024-04-22 09:28:46.581+0000 [id=49]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+        2024-04-22 09:28:46.582+0000 [id=49]    INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
+        2024-04-22 09:29:25.619+0000 [id=32]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
+        2024-04-22 09:29:25.669+0000 [id=24]    INFO    hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
+</pre>
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_3_execute_shell_010.png" alt="ss_jenkins_beginner_next_3_execute_shell_010" style="display: block; margin: 0 auto;">
+</div> 
 
 &nbsp;
 
@@ -312,8 +492,3 @@ Create the network 'jenkins'
 &nbsp;
 
 &nbsp;
-
-
-
-
-
