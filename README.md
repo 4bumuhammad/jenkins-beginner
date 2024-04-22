@@ -262,65 +262,6 @@ Create the network 'jenkins'
 
 &nbsp;
 
-<pre>
-    ❯ docker images
-
-
-    ❯ docker ps -a
-
-</pre>
-
-&nbsp;
-
-<pre>
-    ❯ docker logs jenkins-container
-
-
-        Running from: /usr/share/jenkins/jenkins.war
-        webroot: /var/jenkins_home/war
-        2024-04-19 09:35:23.789+0000 [id=1]     INFO    winstone.Logger#logInternal: Beginning extraction from war file
-        2024-04-19 09:35:44.278+0000 [id=1]     WARNING o.e.j.s.handler.ContextHandler#setContextPath: Empty contextPath
-        2024-04-19 09:35:44.322+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: jetty-10.0.20; built: 2024-01-29T20:46:45.278Z; git: 3a745c71c23682146f262b99f4ddc4c1bc41630c; jvm 17.0.10+7
-        2024-04-19 09:35:45.154+0000 [id=1]     INFO    o.e.j.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
-        2024-04-19 09:35:45.419+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: Session workerName=node0
-        2024-04-19 09:35:47.246+0000 [id=1]     INFO    hudson.WebAppMain#contextInitialized: Jenkins home directory: /var/jenkins_home found at: EnvVars.masterEnvVars.get("JENKINS_HOME")
-        2024-04-19 09:35:47.794+0000 [id=1]     INFO    o.e.j.s.handler.ContextHandler#doStart: Started w.@4d192aef{Jenkins v2.440.3,/,file:///var/jenkins_home/war/,AVAILABLE}{/var/jenkins_home/war}
-        2024-04-19 09:35:47.809+0000 [id=1]     INFO    o.e.j.server.AbstractConnector#doStart: Started ServerConnector@78365cfa{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-        2024-04-19 09:35:47.822+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: Started Server@5644dc81{STARTING}[10.0.20,sto=0] @24294ms
-        2024-04-19 09:35:47.823+0000 [id=25]    INFO    winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
-        2024-04-19 09:35:49.161+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Started initialization
-        2024-04-19 09:35:49.291+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Listed all plugins
-        2024-04-19 09:35:53.447+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
-        2024-04-19 09:35:53.472+0000 [id=36]    INFO    jenkins.InitReactorRunner$1#onAttained: Started all plugins
-        2024-04-19 09:35:53.506+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
-        2024-04-19 09:35:54.282+0000 [id=36]    INFO    jenkins.InitReactorRunner$1#onAttained: System config loaded
-        2024-04-19 09:35:54.282+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: System config adapted
-        2024-04-19 09:35:54.283+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
-        2024-04-19 09:35:54.284+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
-        2024-04-19 09:35:54.379+0000 [id=49]    INFO    hudson.util.Retrier#start: Attempt #1 to do the action check updates server
-        2024-04-19 09:35:55.434+0000 [id=36]    INFO    jenkins.install.SetupWizard#init: 
-
-        *************************************************************
-        *************************************************************
-        *************************************************************
-
-        Jenkins initial setup is required. An admin user has been created and a password generated.
-        Please use the following password to proceed to installation:
-
-        d4586404c2854cc59869d26ca0a7b113
-
-        This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
-
-        *************************************************************
-        *************************************************************
-        *************************************************************
-
-        2024-04-19 09:36:06.939+0000 [id=36]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
-        2024-04-19 09:36:06.978+0000 [id=24]    INFO    hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
-        2024-04-19 09:36:08.443+0000 [id=49]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
-        2024-04-19 09:36:08.444+0000 [id=49]    INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
-</pre>
-
 &nbsp;
  
 &nbsp;
@@ -334,6 +275,29 @@ Create the network 'jenkins'
 &nbsp;
 
 ---
+
+&nbsp;
+
+&nbsp;
+
+The Dockerfile script file for jenkins includes python installed.
+<pre>
+    ❯ vim Dockerfile
+
+        FROM jenkins/jenkins:2.440.3-lts
+
+        USER root
+        RUN apt-get update && \
+            apt-get install -y \
+            python3 \
+            python3-pip \
+            && apt-get clean \
+            && rm -rf /var/lib/apt/lists/*
+
+        EXPOSE 8080 50000
+
+        USER jenkins
+</pre>
 
 &nbsp;
 
