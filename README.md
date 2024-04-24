@@ -386,7 +386,24 @@ Make sure that the following log sections are present so that you can proceed to
 
 &nbsp;
 
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_011.png" alt="ss_jenkins_beginner_next_python_job_011" style="display: block; margin: 0 auto;">
+</div> 
+
 &nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_012.png" alt="ss_jenkins_beginner_next_python_job_012" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_013.png" alt="ss_jenkins_beginner_next_python_job_013" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
 
 &nbsp;
 
