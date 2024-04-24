@@ -165,6 +165,10 @@ Cleanly delete the current jenkins container and image because it doesn't have p
 
 &nbsp;
 
+---
+
+&nbsp;
+
 ### Build the Jenkins Docker Image
 
 <!-- <pre>
@@ -192,8 +196,6 @@ Cleanly delete the current jenkins container and image because it doesn't have p
         WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
         2261cc209d121c778c47aec4ae814ccb8b3403c066066c7a85cf4e9de87dbbec
 </pre> -->
-
-&nbsp;
 
 &nbsp;
 
