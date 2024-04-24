@@ -314,7 +314,7 @@ Display container list results.
     ❯ docker ps -a
 
         CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS          PORTS                                              NAMES
-        997450ab3808   myjenkins/jenkins:2.440.3-lts   "/usr/bin/tini -- /u…"   20 minutes ago   Up 20 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-container
+        fd56b0fd84fb   myjenkins/jenkins:2.440.3-lts   "/usr/bin/tini -- /u…"   50 seconds ago   Up 49 seconds   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   jenkins-container
 </pre>
 
 &nbsp;
@@ -326,27 +326,27 @@ Open the logs container `jenkins-container` and wait for a few minutes for the f
 
         Running from: /usr/share/jenkins/jenkins.war
         webroot: /var/jenkins_home/war
-        2024-04-22 09:22:20.634+0000 [id=1]     INFO    winstone.Logger#logInternal: Beginning extraction from war file
-        2024-04-22 09:22:40.216+0000 [id=1]     WARNING o.e.j.s.handler.ContextHandler#setContextPath: Empty contextPath
-        2024-04-22 09:22:40.249+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: jetty-10.0.20; built: 2024-01-29T20:46:45.278Z; git: 3a745c71c23682146f262b99f4ddc4c1bc41630c; jvm 17.0.10+7
-        2024-04-22 09:22:40.929+0000 [id=1]     INFO    o.e.j.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
-        2024-04-22 09:22:41.018+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: Session workerName=node0
-        2024-04-22 09:22:42.334+0000 [id=1]     INFO    hudson.WebAppMain#contextInitialized: Jenkins home directory: /var/jenkins_home found at: EnvVars.masterEnvVars.get("JENKINS_HOME")
-        2024-04-22 09:22:42.753+0000 [id=1]     INFO    o.e.j.s.handler.ContextHandler#doStart: Started w.@4d192aef{Jenkins v2.440.3,/,file:///var/jenkins_home/war/,AVAILABLE}{/var/jenkins_home/war}
-        2024-04-22 09:22:42.760+0000 [id=1]     INFO    o.e.j.server.AbstractConnector#doStart: Started ServerConnector@78365cfa{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-        2024-04-22 09:22:42.765+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: Started Server@5644dc81{STARTING}[10.0.20,sto=0] @22457ms
-        2024-04-22 09:22:42.766+0000 [id=25]    INFO    winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
-        2024-04-22 09:22:43.699+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Started initialization
-        2024-04-22 09:22:43.772+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: Listed all plugins
-        2024-04-22 09:22:46.278+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
-        2024-04-22 09:22:46.290+0000 [id=32]    INFO    jenkins.InitReactorRunner$1#onAttained: Started all plugins
-        2024-04-22 09:22:46.322+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
-        2024-04-22 09:22:46.772+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: System config loaded
-        2024-04-22 09:22:46.772+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: System config adapted
-        2024-04-22 09:22:46.772+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
-        2024-04-22 09:22:46.773+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
-        2024-04-22 09:22:46.852+0000 [id=49]    INFO    hudson.util.Retrier#start: Attempt #1 to do the action check updates server
-        2024-04-22 09:22:47.748+0000 [id=35]    INFO    jenkins.install.SetupWizard#init: 
+        2024-04-24 05:52:32.639+0000 [id=1]     INFO    winstone.Logger#logInternal: Beginning extraction from war file
+        2024-04-24 05:52:52.559+0000 [id=1]     WARNING o.e.j.s.handler.ContextHandler#setContextPath: Empty contextPath
+        2024-04-24 05:52:52.598+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: jetty-10.0.20; built: 2024-01-29T20:46:45.278Z; git: 3a745c71c23682146f262b99f4ddc4c1bc41630c; jvm 17.0.10+7
+        2024-04-24 05:52:53.283+0000 [id=1]     INFO    o.e.j.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+        2024-04-24 05:52:53.385+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: Session workerName=node0
+        2024-04-24 05:52:54.786+0000 [id=1]     INFO    hudson.WebAppMain#contextInitialized: Jenkins home directory: /var/jenkins_home found at: EnvVars.masterEnvVars.get("JENKINS_HOME")
+        2024-04-24 05:52:55.217+0000 [id=1]     INFO    o.e.j.s.handler.ContextHandler#doStart: Started w.@4d192aef{Jenkins v2.440.3,/,file:///var/jenkins_home/war/,AVAILABLE}{/var/jenkins_home/war}
+        2024-04-24 05:52:55.230+0000 [id=1]     INFO    o.e.j.server.AbstractConnector#doStart: Started ServerConnector@78365cfa{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+        2024-04-24 05:52:55.241+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: Started Server@5644dc81{STARTING}[10.0.20,sto=0] @22877ms
+        2024-04-24 05:52:55.243+0000 [id=25]    INFO    winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
+        2024-04-24 05:52:56.171+0000 [id=33]    INFO    jenkins.InitReactorRunner$1#onAttained: Started initialization
+        2024-04-24 05:52:56.252+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+        2024-04-24 05:52:58.869+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+        2024-04-24 05:52:58.880+0000 [id=35]    INFO    jenkins.InitReactorRunner$1#onAttained: Started all plugins
+        2024-04-24 05:52:58.897+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+        2024-04-24 05:52:59.369+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: System config loaded
+        2024-04-24 05:52:59.370+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: System config adapted
+        2024-04-24 05:52:59.370+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+        2024-04-24 05:52:59.371+0000 [id=31]    INFO    jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+        2024-04-24 05:52:59.465+0000 [id=49]    INFO    hudson.util.Retrier#start: Attempt #1 to do the action check updates server
+        2024-04-24 05:53:00.745+0000 [id=32]    INFO    jenkins.install.SetupWizard#init: 
 
         *************************************************************
         *************************************************************
@@ -355,7 +355,7 @@ Open the logs container `jenkins-container` and wait for a few minutes for the f
         Jenkins initial setup is required. An admin user has been created and a password generated.
         Please use the following password to proceed to installation:
 
-        1fe91f44db5d49c7956ce3a6b973aff9
+        32756d6b0fba4228b2c41709b3cc9dae
 
         This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
@@ -363,10 +363,10 @@ Open the logs container `jenkins-container` and wait for a few minutes for the f
         *************************************************************
         *************************************************************
 
-        2024-04-22 09:28:46.581+0000 [id=49]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
-        2024-04-22 09:28:46.582+0000 [id=49]    INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
-        2024-04-22 09:29:25.619+0000 [id=32]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
-        2024-04-22 09:29:25.669+0000 [id=24]    INFO    hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
+        2024-04-24 05:53:09.023+0000 [id=49]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+        2024-04-24 05:53:09.024+0000 [id=49]    INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
+        2024-04-24 05:53:16.464+0000 [id=32]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
+        2024-04-24 05:53:16.497+0000 [id=24]    INFO    hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
 </pre>
 
 &nbsp;
