@@ -13,7 +13,7 @@ Run Jenkins with Docker Container :
 
 ## Begin :
 
-- Test : Execute Shell
+- &#x1F530; Test : Execute Shell
 
 &nbsp;
 
@@ -55,7 +55,7 @@ Run Jenkins with Docker Container :
 
 &nbsp;
 
-- Test : Execute Shell (next)
+- &#x1F530; Test : Execute Shell (next)
 
 <div align="center">
     <img src="./gambar-petunjuk/ss_jenkins_beginner_next_execute_shell_005.png" alt="ss_jenkins_beginner_next_execute_shell_005" style="display: block; margin: 0 auto;">
@@ -89,7 +89,7 @@ Run Jenkins with Docker Container :
 
 &nbsp;
 
-- Test : Execute Shell (next 2)
+- &#x1F530; Test : Execute Shell (next 2)
 
 <div align="center">
     <img src="./gambar-petunjuk/ss_jenkins_beginner_next_2_execute_shell_008.png" alt="ss_jenkins_beginner_next_2_execute_shell_008" style="display: block; margin: 0 auto;">
@@ -131,7 +131,7 @@ Run Jenkins with Docker Container :
 
 &nbsp;
 
-- **Test : Python job**
+- &#x1F530; **Test : Python job**
 
 Reference : <br />
 Learn Jenkins! Complete Jenkins Course - Zero to Hero
