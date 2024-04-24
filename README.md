@@ -294,7 +294,7 @@ Run the image into a container that has been set up.
         393f1481319c87f03eb229b52e1f01ff49b02ec5bd6d03e2b2f3275c88e9fef4
 
 
-        
+
 
     ❯ docker run --restart=on-failure --detach \
         --network jenkins \
@@ -303,7 +303,8 @@ Run the image into a container that has been set up.
         -v /Users/powercommerce/Documents/test/docker-mount/jenkins/home:/var/jenkins_home \
         myjenkins/jenkins:2.440.3-lts
 
-        
+
+        fd56b0fd84fb0b16b48f4a4042442b528f09813f0b91ccfbdf5c3e2e9ea61747
 </pre>
 
 &nbsp;
