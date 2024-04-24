@@ -224,46 +224,48 @@ Build an image of the Dockerfile script.
 <pre>
     ❯ docker build -t myjenkins/jenkins:2.440.3-lts .
 
-        [+] Building 152.0s (6/6) FINISHED                                                                                                                                                                                  
-        => [internal] load build definition from Dockerfile                                                                                                                                                           0.0s
-        => => transferring dockerfile: 471B                                                                                                                                                                           0.0s
-        => [internal] load .dockerignore                                                                                                                                                                              0.0s
-        => => transferring context: 2B                                                                                                                                                                                0.0s
-        => [internal] load metadata for docker.io/jenkins/jenkins:2.440.3-lts                                                                                                                                         6.9s
-        => [1/2] FROM docker.io/jenkins/jenkins:2.440.3-lts@sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536                                                                                  99.6s
-        => => resolve docker.io/jenkins/jenkins:2.440.3-lts@sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536                                                                                   0.0s
-        => => sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536 3.12kB / 3.12kB                                                                                                                 0.0s
-        => => sha256:665ac20445a40ed26152b0843803786f5f4ef44dac816f5e0b42f9b9be197253 2.58kB / 2.58kB                                                                                                                 0.0s
-        => => sha256:7bc520724a1a906377ba19dc60ca86adfa75b42748583c9c5981e473ca3bbfa2 12.35kB / 12.35kB                                                                                                               0.0s
-        => => sha256:b4702c7673f1c80ba39f4a7b3b20fa908e622dd7ee655640c3960db5278c7e14 61.12MB / 61.12MB                                                                                                              75.6s
-        => => sha256:1e92f3a395ff98a929e797a3c392bb6d0f05531068d34b81d3cd41ed6ce82ca4 49.60MB / 49.60MB                                                                                                              57.4s
-        => => sha256:bf18644a36a52b170e59d313f05fb9f68b1615dcb436b5b6c1b8d62d7c0afc4e 8.25MB / 8.25MB                                                                                                                11.8s
-        => => sha256:4f445a566c9532f469bfe6c702768e7697a15b9cf9a1403cd999be2619738a0c 1.23kB / 1.23kB                                                                                                                12.3s
-        => => sha256:c1f6789b0bcf11523c86d263d27739edfa6030dab89f9deeb8cc56e4a7f5e932 184B / 184B                                                                                                                    12.7s
-        => => sha256:50acd283f613f1b50454c9fc2fd6cca1366ee670f7e020260abed4fa76a88285 93.28MB / 93.28MB                                                                                                              86.7s
-        => => sha256:7409fe8197606dd9c9ededed3d901cf3ecaae0f10a668807309fdd9d0dc4e33a 190B / 190B                                                                                                                    59.1s
-        => => extracting sha256:1e92f3a395ff98a929e797a3c392bb6d0f05531068d34b81d3cd41ed6ce82ca4                                                                                                                      1.3s
-        => => sha256:9f3e43a5a6fb13196b957feb21d315e8027237b688ba92a1368596b819f9dbc6 6.21MB / 6.21MB                                                                                                                65.6s
-        => => sha256:5b29115785db463913ca26c24421ef4ab42478a96cadb853f758e7d42ae5b2eb 62.66MB / 62.66MB                                                                                                              98.5s
-        => => extracting sha256:b4702c7673f1c80ba39f4a7b3b20fa908e622dd7ee655640c3960db5278c7e14                                                                                                                      1.4s
-        => => sha256:1b74dc9dcd874ebb273c255ff11f86dbe07ef05eea7247f77070f3ae9b606dcf 1.92kB / 1.92kB                                                                                                                84.4s
-        => => extracting sha256:bf18644a36a52b170e59d313f05fb9f68b1615dcb436b5b6c1b8d62d7c0afc4e                                                                                                                      0.2s
-        => => extracting sha256:4f445a566c9532f469bfe6c702768e7697a15b9cf9a1403cd999be2619738a0c                                                                                                                      0.0s
-        => => extracting sha256:c1f6789b0bcf11523c86d263d27739edfa6030dab89f9deeb8cc56e4a7f5e932                                                                                                                      0.0s
-        => => sha256:074b15a3518d428f4ba1da66804c0ba56c96f7a243a08cc09b9f72878570b27e 1.23kB / 1.23kB                                                                                                                86.2s
-        => => sha256:ede1958e1e8f82bfa6fba790041c952357db5bd8b08aea1a2c5194624265cb13 391B / 391B                                                                                                                    86.7s
-        => => extracting sha256:50acd283f613f1b50454c9fc2fd6cca1366ee670f7e020260abed4fa76a88285                                                                                                                      0.3s
-        => => extracting sha256:7409fe8197606dd9c9ededed3d901cf3ecaae0f10a668807309fdd9d0dc4e33a                                                                                                                      0.0s
-        => => extracting sha256:9f3e43a5a6fb13196b957feb21d315e8027237b688ba92a1368596b819f9dbc6                                                                                                                      0.1s
-        => => extracting sha256:5b29115785db463913ca26c24421ef4ab42478a96cadb853f758e7d42ae5b2eb                                                                                                                      0.8s
-        => => extracting sha256:1b74dc9dcd874ebb273c255ff11f86dbe07ef05eea7247f77070f3ae9b606dcf                                                                                                                      0.0s
-        => => extracting sha256:074b15a3518d428f4ba1da66804c0ba56c96f7a243a08cc09b9f72878570b27e                                                                                                                      0.0s
-        => => extracting sha256:ede1958e1e8f82bfa6fba790041c952357db5bd8b08aea1a2c5194624265cb13                                                                                                                      0.0s
-        => [2/2] RUN apt-get update &&     apt-get install -y     python3     python3-pip     && apt-get clean     && rm -rf /var/lib/apt/lists/*                                                                    44.3s
-        => exporting to image                                                                                                                                                                                         1.0s
-        => => exporting layers                                                                                                                                                                                        1.0s
-        => => writing image sha256:f7d77e429e3cc60610a08b69faf8951361cc4e13c2b408f5201c71588b93b9ee                                                                                                                   0.0s
-        => => naming to docker.io/myjenkins/jenkins:2.440.3-lts                              
+        [+] Building 150.4s (6/6) FINISHED                                                                                                                                                                                          
+        => [internal] load build definition from Dockerfile                                                                                                                                                                   0.0s 
+        => => transferring dockerfile: 261B                                                                                                                                                                                   0.0s 
+        => [internal] load .dockerignore                                                                                                                                                                                      0.0s 
+        => => transferring context: 2B                                                                                                                                                                                        0.0s 
+        => [internal] load metadata for docker.io/jenkins/jenkins:2.440.3-lts                                                                                                                                                 3.8s 
+        => [1/2] FROM docker.io/jenkins/jenkins:2.440.3-lts@sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536                                                                                          98.4s 
+        => => resolve docker.io/jenkins/jenkins:2.440.3-lts@sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536                                                                                           0.0s 
+        => => sha256:de4fea113221ab9e67567da3248abcb731dbe407056d0cab28cfa88bad9ae536 3.12kB / 3.12kB                                                                                                                         0.0s 
+        => => sha256:665ac20445a40ed26152b0843803786f5f4ef44dac816f5e0b42f9b9be197253 2.58kB / 2.58kB                                                                                                                         0.0s 
+        => => sha256:7bc520724a1a906377ba19dc60ca86adfa75b42748583c9c5981e473ca3bbfa2 12.35kB / 12.35kB                                                                                                                       0.0s 
+        => => sha256:1e92f3a395ff98a929e797a3c392bb6d0f05531068d34b81d3cd41ed6ce82ca4 49.60MB / 49.60MB                                                                                                                      37.7s 
+        => => sha256:bf18644a36a52b170e59d313f05fb9f68b1615dcb436b5b6c1b8d62d7c0afc4e 8.25MB / 8.25MB                                                                                                                        13.5s 
+        => => sha256:b4702c7673f1c80ba39f4a7b3b20fa908e622dd7ee655640c3960db5278c7e14 61.12MB / 61.12MB                                                                                                                      57.4s 
+        => => sha256:4f445a566c9532f469bfe6c702768e7697a15b9cf9a1403cd999be2619738a0c 1.23kB / 1.23kB                                                                                                                        13.9s 
+        => => sha256:c1f6789b0bcf11523c86d263d27739edfa6030dab89f9deeb8cc56e4a7f5e932 184B / 184B                                                                                                                            14.2s
+        => => sha256:50acd283f613f1b50454c9fc2fd6cca1366ee670f7e020260abed4fa76a88285 93.28MB / 93.28MB                                                                                                                      96.9s
+        => => sha256:7409fe8197606dd9c9ededed3d901cf3ecaae0f10a668807309fdd9d0dc4e33a 190B / 190B                                                                                                                            39.0s
+        => => extracting sha256:1e92f3a395ff98a929e797a3c392bb6d0f05531068d34b81d3cd41ed6ce82ca4                                                                                                                              1.3s
+        => => sha256:9f3e43a5a6fb13196b957feb21d315e8027237b688ba92a1368596b819f9dbc6 6.21MB / 6.21MB                                                                                                                        49.6s
+        => => sha256:5b29115785db463913ca26c24421ef4ab42478a96cadb853f758e7d42ae5b2eb 62.66MB / 62.66MB                                                                                                                      94.6s
+        => => extracting sha256:b4702c7673f1c80ba39f4a7b3b20fa908e622dd7ee655640c3960db5278c7e14                                                                                                                              1.5s
+        => => sha256:1b74dc9dcd874ebb273c255ff11f86dbe07ef05eea7247f77070f3ae9b606dcf 1.92kB / 1.92kB                                                                                                                        58.3s
+        => => sha256:074b15a3518d428f4ba1da66804c0ba56c96f7a243a08cc09b9f72878570b27e 1.23kB / 1.23kB                                                                                                                        58.7s
+        => => sha256:ede1958e1e8f82bfa6fba790041c952357db5bd8b08aea1a2c5194624265cb13 391B / 391B                                                                                                                            59.1s
+        => => extracting sha256:bf18644a36a52b170e59d313f05fb9f68b1615dcb436b5b6c1b8d62d7c0afc4e                                                                                                                              0.1s
+        => => extracting sha256:4f445a566c9532f469bfe6c702768e7697a15b9cf9a1403cd999be2619738a0c                                                                                                                              0.0s
+        => => extracting sha256:c1f6789b0bcf11523c86d263d27739edfa6030dab89f9deeb8cc56e4a7f5e932                                                                                                                              0.0s
+        => => extracting sha256:50acd283f613f1b50454c9fc2fd6cca1366ee670f7e020260abed4fa76a88285                                                                                                                              0.2s
+        => => extracting sha256:7409fe8197606dd9c9ededed3d901cf3ecaae0f10a668807309fdd9d0dc4e33a                                                                                                                              0.0s
+        => => extracting sha256:9f3e43a5a6fb13196b957feb21d315e8027237b688ba92a1368596b819f9dbc6                                                                                                                              0.1s
+        => => extracting sha256:5b29115785db463913ca26c24421ef4ab42478a96cadb853f758e7d42ae5b2eb                                                                                                                              0.8s
+        => => extracting sha256:1b74dc9dcd874ebb273c255ff11f86dbe07ef05eea7247f77070f3ae9b606dcf                                                                                                                              0.0s
+        => => extracting sha256:074b15a3518d428f4ba1da66804c0ba56c96f7a243a08cc09b9f72878570b27e                                                                                                                              0.0s
+        => => extracting sha256:ede1958e1e8f82bfa6fba790041c952357db5bd8b08aea1a2c5194624265cb13                                                                                                                              0.0s
+        => [2/2] RUN apt-get update &&     apt-get install -y     python3     python3-pip     && apt-get clean     && rm -rf /var/lib/apt/lists/*                                                                            46.7s
+        => exporting to image                                                                                                                                                                                                 1.3s
+        => => exporting layers                                                                                                                                                                                                1.3s
+        => => writing image sha256:3a36e80722612bd9c2716c4ed383a66810d3c6bfd0d4c17375367d6be677e748                                                                                                                           0.0s
+        => => naming to docker.io/myjenkins/jenkins:2.440.3-lts                                                                                                                                                               0.0s
+
+        Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
 </pre>
 
 &nbsp;
@@ -272,8 +274,8 @@ Display the result as a new image.
 <pre>
     ❯ docker images
 
-        REPOSITORY          TAG           IMAGE ID       CREATED          SIZE
-        myjenkins/jenkins   2.440.3-lts   f7d77e429e3c   25 minutes ago   869MB
+        REPOSITORY          TAG           IMAGE ID       CREATED              SIZE
+        myjenkins/jenkins   2.440.3-lts   3a36e8072261   About a minute ago   896MB
 </pre>
 
 &nbsp;
@@ -285,6 +287,23 @@ Run the image into a container that has been set up.
         -p 8080:8080 -p 50000:50000 \
         -v /Users/powercommerce/Documents/test/docker-mount/jenkins/home:/var/jenkins_home \
         myjenkins/jenkins:2.440.3-lts
+
+
+    ❯ docker network create jenkins
+
+        393f1481319c87f03eb229b52e1f01ff49b02ec5bd6d03e2b2f3275c88e9fef4
+
+
+        
+
+    ❯ docker run --restart=on-failure --detach \
+        --network jenkins \
+        --name jenkins-container \
+        -p 8080:8080 -p 50000:50000 \
+        -v /Users/powercommerce/Documents/test/docker-mount/jenkins/home:/var/jenkins_home \
+        myjenkins/jenkins:2.440.3-lts
+
+        
 </pre>
 
 &nbsp;
