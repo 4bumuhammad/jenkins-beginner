@@ -383,6 +383,7 @@ Make sure that the following log sections are present so that you can proceed to
 
 &nbsp;
 
+Check python.
 <pre>
     ❯ docker exec -it jenkins-container /bin/bash
         jenkins@997450ab3808:/$ python3 --version
