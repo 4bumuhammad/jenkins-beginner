@@ -289,11 +289,16 @@ Run the image into a container that has been set up.
         myjenkins/jenkins:2.440.3-lts
 
 
+
+
+    # OR
+
+
+
+
     ❯ docker network create jenkins
 
         393f1481319c87f03eb229b52e1f01ff49b02ec5bd6d03e2b2f3275c88e9fef4
-
-
 
 
     ❯ docker run --restart=on-failure --detach \
