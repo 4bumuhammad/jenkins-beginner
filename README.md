@@ -440,8 +440,33 @@ Open console dashboard.
 
 &nbsp;
 
+&nbsp;
+
+---
 
 &nbsp;
+
+Create Item in Jenkins
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_018.png" alt="ss_jenkins_beginner_next_python_job_018" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+Project python in repository github : 
+<pre>
+    https://github.com/4bumuhammad/jenkins-beginner/blob/main/helloworld.py
+</pre>
+
+&nbsp;
+
+helloworld.py :
+<pre>
+    print("Hello world")
+</pre>
+
+&nbsp;
+
 
 ---
 
