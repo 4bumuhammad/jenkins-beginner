@@ -136,7 +136,7 @@ Run Jenkins with Docker Container :
 Reference : <br />
 Learn Jenkins! Complete Jenkins Course - Zero to Hero
 <pre>https://www.youtube.com/watch?v=6YZvp2GwT0A</pre>
-30.17
+32.13
 
 &nbsp;
 
