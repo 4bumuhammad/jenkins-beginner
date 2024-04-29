@@ -416,6 +416,30 @@ Open console dashboard.
 
 &nbsp;
 
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_014.png" alt="ss_jenkins_beginner_next_python_job_014" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_015.png" alt="ss_jenkins_beginner_next_python_job_015" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_016.png" alt="ss_jenkins_beginner_next_python_job_016" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_017.png" alt="ss_jenkins_beginner_next_python_job_017" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
 
 &nbsp;
 
