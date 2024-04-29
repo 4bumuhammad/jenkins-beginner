@@ -467,6 +467,37 @@ helloworld.py :
 
 &nbsp;
 
+## Jenkins Configure and Build
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_019_config_build.png" alt="ss_jenkins_beginner_next_python_job_019_config_build" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_020_config_build.png" alt="ss_jenkins_beginner_next_python_job_020_config_build" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_021_config_build.png" alt="ss_jenkins_beginner_next_python_job_021_config_build" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_022_config_build.png" alt="ss_jenkins_beginner_next_python_job_022_config_build" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
+
+<div align="center">
+    <img src="./gambar-petunjuk/ss_jenkins_beginner_next_python_job_023_config_build.png" alt="ss_jenkins_beginner_next_python_job_023_config_build" style="display: block; margin: 0 auto;">
+</div> 
+
+&nbsp;
 
 ---
 
